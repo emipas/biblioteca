@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^api/(.*)/(.*)$ api.php?risorsa=$1&metodo=$2 [L,QSA]
