@@ -6,8 +6,10 @@ $id = (int) $_GET['id_libro'];
   $categorie = Libro::getCategorie();
   $utenti = Libro::getUtenti() ;
   $autore_selezionato = $item->getNome_autore();
-  $categoria_selezionata = $item->getDescrizione();
+  foreach ($item as $value) {
+  $categoria_selezionata = $item->getDescrizione();};
   $utente_selezionato = $item->getNome_utente();
+  print_r($item);
   ?>
 
 <h2>Modifica Libro</h2>
@@ -27,13 +29,17 @@ $id = (int) $_GET['id_libro'];
    				if ($autore_selezionato != $autore->getNome_autore()) { ?>
                     <option><?php echo $autore->getNome_autore();}} ?></option> 
         	</select></li>
-		<li><label for="descrizione">Categoria</label><br />
+        	        <li><label for="descrizione">Categoria</label><br />
+   			<?php foreach($categorie as $categoria){ ?>
+                    <input type="checkbox" name="descrizione[]" value="<?php echo htmlspecialchars($categoria->getDescrizione()); ?>"><?php echo $categoria->getDescrizione();} print_r($categoria_selezionata);?></input> 
+        	</li>
+	<?php /*	<li><label for="descrizione">Categoria</label><br />
 			<select name="descrizione" > 
 			<option class="selected"><?php echo $categoria_selezionata; ?></option>
    			<?php foreach($categorie as $categoria){ 
                     if ($categoria_selezionata != $categoria->getDescrizione()) { ?>
                     <option><?php echo $categoria->getDescrizione();}} ?></option> 
-        	</select></li>
+        	</select> <?php */ ?> </li>
 		<li><label for="editore">Editore</label><br />
 			<input type="text" name="editore" id="editore" 
 			value="<?php echo htmlspecialchars($item->getEditore()); ?>"/></li>

@@ -7,19 +7,20 @@ foreach ($items as $book) {
   $aggr_cat = ['id'=>($book->getId_categoria()) , 'categoria'=>($book->getDescrizione())];
 
   $group_key = ($book->getId_libro().'-'.$book->getId_utente());
-  //print_r($group_key.' ;');
+
   if(array_key_exists($group_key,$unique_items)){
     //il libro e' gia' inserito nella lista
     
     array_push($unique_items[$group_key]->categories,$aggr_cat);
   } else {
-    
+  
     $book->categories = [$aggr_cat];
     $unique_items[$group_key] = $book;
-    //$unique_items[$book->getId_libro()]->categories = 'ss' 
   }
 }
-
+//print_r($unique_items) 
+print_r($group_key)  
+//print_r($book)
 ?>
 
 <ul>

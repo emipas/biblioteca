@@ -478,6 +478,7 @@ class Libro {
 		$connection = Database::getConnection();
 		$autore = $_POST['nome_autore'];
 		$categoria =$_POST['descrizione'];
+		$cat_str = implode ("' OR descrizione = '",$categoria);
 		$utente = $_POST['nome_utente'];
 		$query ="BEGIN;
 				INSERT INTO libro (titolo,isbn,editore,numero_pagine,collocazione,argomenti)
@@ -492,9 +493,8 @@ class Libro {
 					WHERE nome_autore = '$autore'),
 					(SELECT MAX(id_libro) FROM libro));
 				INSERT INTO categoria_libro(id_categoria,id_libro)
-					VALUES ((SELECT id_categoria FROM categoria
-					WHERE descrizione = '$categoria'),
-					(SELECT MAX(id_libro)FROM libro));
+					SELECT id_categoria , (SELECT MAX(id_libro)FROM libro)
+					FROM categoria WHERE descrizione = '$cat_str';
 				INSERT INTO libro_letto(id_libro,id_utente,
 						num_pag_lette,data_inizio_lettura,data_fine_lettura,note)
 					VALUES ((SELECT MAX(id_libro) FROM libro),
