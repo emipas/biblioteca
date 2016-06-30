@@ -9,7 +9,6 @@ $id = (int) $_GET['id_libro'];
   foreach ($item as $value) {
   $categoria_selezionata = $item->getDescrizione();};
   $utente_selezionato = $item->getNome_utente();
-  print_r($item);
   ?>
 
 <h2>Modifica Libro</h2>
@@ -31,7 +30,9 @@ $id = (int) $_GET['id_libro'];
         	</select></li>
         	        <li><label for="descrizione">Categoria</label><br />
    			<?php foreach($categorie as $categoria){ ?>
-                    <input type="checkbox" name="descrizione[]" value="<?php echo htmlspecialchars($categoria->getDescrizione()); ?>"><?php echo $categoria->getDescrizione();} print_r($categoria_selezionata);?></input> 
+                    <input type="checkbox" name="descrizione[]" value=
+                    "<?php echo htmlspecialchars($categoria->getDescrizione()); ?>">
+                    <?php echo $categoria->getDescrizione();} ?></input> 
         	</li>
 	<?php /*	<li><label for="descrizione">Categoria</label><br />
 			<select name="descrizione" > 

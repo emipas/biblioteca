@@ -25,7 +25,9 @@ $utenti = Libro::getUtenti() ;?>
         	</select>
         <li><label for="descrizione">Categoria</label><br />
    			<?php foreach($categorie as $categoria){ ?>
-                    <input type="checkbox" name="descrizione[]" value="<?php echo htmlspecialchars($categoria->getDescrizione()); ?>"><?php echo $categoria->getDescrizione();} ?></input> 
+                    <input type="checkbox" name="descrizione[]" value=
+                    "<?php echo htmlspecialchars($categoria->getDescrizione()); ?>">
+                    <?php echo $categoria->getDescrizione();} ?></input> 
         	</li>
 		<li><label for="editore">Editore</label><br />
 			<input type="text" name="editore" id="editore"/></li>

@@ -18,9 +18,6 @@ foreach ($items as $book) {
     $unique_items[$group_key] = $book;
   }
 }
-//print_r($unique_items) 
-print_r($group_key)  
-//print_r($book)
 ?>
 
 <ul>
